@@ -1,0 +1,12 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="cardview_margin">1dp</dimen>
+    <dimen name="cardview_message_horizontal_padding">8dp</dimen>
+
+    <dimen name="fragment_padding">8dp</dimen>
+    <dimen name="character_name_margin">2dp</dimen>
+    <dimen name="element_padding">4dp</dimen>
+    <dimen name="detail_element_margin">4dp</dimen>
+
+    <dimen name="button_corner_radius">16dp</dimen>
+</resources>

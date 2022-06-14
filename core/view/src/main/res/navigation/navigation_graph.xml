@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/heroes_galley_option">
+
+    <fragment
+        android:id="@+id/heroes_galley_option"
+        android:name="com.openbank.marvelheroes.view.gallery.GalleryFragment"
+        android:label="@string/menu_heroes_gallery"
+        tools:layout="@layout/fragment_gallery">
+        <action android:id="@+id/to_detail_option"
+            app:destination="@id/detail_option"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:launchSingleTop="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/search_heroes_option"
+        android:name="com.openbank.marvelheroes.view.search.SearchFragment"
+        android:label="@string/menu_search_heroes"
+        tools:layout="@layout/fragment_search">
+        <action android:id="@+id/to_detail_option"
+            app:destination="@id/detail_option"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:launchSingleTop="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detail_option"
+        android:name="com.openbank.marvelheroes.view.detail.DetailFragment"
+        tools:layout="@layout/fragment_detail" />
+</navigation>
