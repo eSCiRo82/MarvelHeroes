@@ -8,8 +8,6 @@ This app gives you access to all data about your favourite Marvel superheroes.
 
 - __GSon converter 2.9.0__: Handling and managing JSON format of the API responses.
 
-- __Room 2.4.2__: Handling and managing the SQLite database.
-
 - __Dagger 2.41__: Handling and managing dependency injection.
 
 - __MockK 1.12.3__: Mocking and verifying of elements for tests.
@@ -36,7 +34,7 @@ Each of these sections is contained in a module:
 
 ## Sections of the app
 
-The app is divided in two main sections, as it is shown in the menu displayed in the following image:
+The app is divided in two main sections: _Heroes Gallery_ and _Search Heroes_, accessible from the application menu as shown in the following image:
 
 <img src="screenshots/menu.png" alt="drawing" style="width:480px;"/>
 
