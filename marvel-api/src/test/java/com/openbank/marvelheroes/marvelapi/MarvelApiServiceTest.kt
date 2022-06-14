@@ -37,7 +37,8 @@ class MarvelApiServiceTest {
     fun `request marvel heroes synchronously`() {
         val request = CharactersRequest(service)
         val response = request.requestSync(mapOf<String, Any>(
-            "ts" to Calendar.getInstance().timeInMillis
+            "ts" to Calendar.getInstance().timeInMillis,
+            "limit" to 5
         ))
 
         assertTrue(response is Either.Success)

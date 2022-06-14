@@ -112,10 +112,10 @@ internal class MarvelCharactersRepositoryTest {
             assertEquals(mockkCharacterObject1.id, id)
             assertEquals(mockkCharacterObject1.name, name)
             assertEquals(mockkCharacterObject1.description, description)
-            assertEquals(mockkCharacterObject1.comics.items[0].name, comics[0])
-            assertEquals(mockkCharacterObject1.series.items[0].name, series[0])
-            assertEquals(mockkCharacterObject1.stories.items[0].name, stories[0])
-            assertEquals(mockkCharacterObject1.events.items[0].name, events[0])
+            assertEquals(mockkCharacterObject1.comics.items[0].name, comics[0].name)
+            assertEquals(mockkCharacterObject1.series.items[0].name, series[0].name)
+            assertEquals(mockkCharacterObject1.stories.items[0].name, stories[0].name)
+            assertEquals(mockkCharacterObject1.events.items[0].name, events[0].name)
             assertNull(image)
         }
 

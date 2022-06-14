@@ -55,10 +55,12 @@ internal class GetCharacterDetailUseCaseTest {
     fun `get the character detail is success`() = coroutineTestRule.runTest {
         coEvery { repository.getCharacterDetail(1) } returns Value(characterDetail)
 
-        getCharacterDetailUseCase.prepare(1).collect { result ->
+        getCharacterDetailUseCase.prepare(1).test {
+            val result = awaitItem()
             result.onSuccess { detail ->
                 assertEquals(characterDetail, detail)
             }
+            cancelAndIgnoreRemainingEvents()
         }
 
         coVerify(exactly = 1) { repository.getCharacterDetail(1) }
@@ -69,10 +71,12 @@ internal class GetCharacterDetailUseCaseTest {
     fun `get the character detail fails`() = coroutineTestRule.runTest {
         coEvery { repository.getCharacterDetail(1) } returns None
 
-        getCharacterDetailUseCase.prepare(1).collect { result ->
+        getCharacterDetailUseCase.prepare(1).test {
+            val result = awaitItem()
             result.onFailure { fail ->
                 assertTrue(fail is CharacterNotFound)
             }
+            cancelAndIgnoreRemainingEvents()
         }
 
         coVerify(exactly = 1) { repository.getCharacterDetail(1) }

@@ -1,5 +1,6 @@
 package com.openbank.marvelheroes.domain.usecase
 
+import app.cash.turbine.test
 import com.openbank.marvelheroes.common.extension.onFailure
 import com.openbank.marvelheroes.common.extension.onSuccess
 import com.openbank.marvelheroes.data.repository.CharactersRepository
@@ -46,13 +47,15 @@ internal class GetCharactersByNameUseCaseTest {
     fun `get the character detail is success`() = coroutineTestRule.runTest {
         coEvery { repository.getCharactersByName("char", 1) } returns CharactersRepository.CharactersOutput(charactersList, false)
 
-        getCharactersByNameUseCase.prepare(GetCharactersByNameUseCase.Input("char", 1)).collect { result ->
+        getCharactersByNameUseCase.prepare(GetCharactersByNameUseCase.Input("char", 1)).test {
+            val result = awaitItem()
             result.onSuccess { output ->
                 assertEquals(charactersList, output.list)
                 assertFalse(output.endPage)
             }.onFailure {
                 assertTrue(false)
             }
+            cancelAndIgnoreRemainingEvents()
         }
 
         coVerify(exactly = 1) { repository.getCharactersByName("char", 1) }
@@ -64,12 +67,14 @@ internal class GetCharactersByNameUseCaseTest {
         coEvery { repository.getCharactersByName("char", 1) } returns CharactersRepository.CharactersOutput(
             listOf(), false)
 
-        getCharactersByNameUseCase.prepare(GetCharactersByNameUseCase.Input("char", 1)).collect { result ->
+        getCharactersByNameUseCase.prepare(GetCharactersByNameUseCase.Input("char", 1)).test {
+            val result = awaitItem()
             result.onFailure { fail ->
                 assertTrue(fail is NoCharactersFound)
             }.onSuccess {
                 assertTrue(false)
             }
+            cancelAndIgnoreRemainingEvents()
         }
 
         coVerify(exactly = 1) { repository.getCharactersByName("char", 1) }

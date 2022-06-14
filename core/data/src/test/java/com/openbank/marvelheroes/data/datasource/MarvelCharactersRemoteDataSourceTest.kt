@@ -44,7 +44,9 @@ internal class MarvelCharactersRemoteDataSourceTest {
     }
 
     private val mockkApiResponseCharacterList: ApiResponse<CharacterObject> = mockk {
+        every { data.total } returns 100
         every { data.count } returns 3
+        every { data.offset } returns 0
         every { data.results } returns listOf(mockkCharacterObject1,
             mockkCharacterObject2,
             mockkCharacterObject3)
@@ -87,17 +89,13 @@ internal class MarvelCharactersRemoteDataSourceTest {
 
     @Test
     fun `get characters list is success, then a list of character objects is returned`() {
-        val params = mapOf(
-            "limit" to 20,
-            "offset" to 0
-        )
-        every { mockkCharactersRequest.requestSync(params) } returns Either.Success(mockkApiResponseCharacterList)
+        every { mockkCharactersRequest.requestSync(any()) } returns Either.Success(mockkApiResponseCharacterList)
 
         val result = marvelCharactersRemoteDataSource.get(null, 20, 0)
 
         assertEquals(mockkApiResponseCharacterList.data.count, result.list.size)
 
-        verify(exactly = 1) { mockkCharactersRequest.requestSync(params) }
+        verify(exactly = 1) { mockkCharactersRequest.requestSync(any()) }
         confirmVerified(mockkCharactersRequest)
     }
 
