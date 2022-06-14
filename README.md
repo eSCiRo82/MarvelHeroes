@@ -33,3 +33,9 @@ Each of these sections is contained in a module:
 - __Domain__: Set of uses cases used in ViewModel to get and store the data.
 
 - __Data__: In this module are managed the data sources of the app and offers a repository interface to deal with them.
+
+## Sections of the app
+
+The app is divided in two main sections, as it is shown in the menu displayed in the following image:
+
+![Menu](screenshots/menu.png)
