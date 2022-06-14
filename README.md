@@ -38,4 +38,22 @@ Each of these sections is contained in a module:
 
 The app is divided in two main sections, as it is shown in the menu displayed in the following image:
 
-![Menu](screenshots/menu.png)
+<img src="screenshots/menu.png" alt="drawing" style="width:480px;"/>
+
+### __Heroes Gallery__
+
+Display the list of characters paginated in 30-characters pages:
+
+<img src="screenshots/gallery.png" alt="drawing" style="width:480px;"/>
+
+### __Search Heroes__
+
+Allow the user to search heroes by the first letters of their names.
+
+<img src="screenshots/search.png" alt="drawing" style="width:480px;"/>
+
+### __Detail__
+
+When the user clicks on any character card, he will be led  to the detail page of the selected character.
+
+<img src="screenshots/detail.png" alt="drawing" style="width:480px;"/>
